@@ -9,10 +9,16 @@ export default function CalendarFlipperTemplate( props ) {
         var d = number % 10
         let decider = ( number % 100 / 10 )
         
-        return ( ~~ decider === 1 ) ? 'th' :
-                ( d === 1 ) ? 'st' :
-                ( d === 2 ) ? 'nd' :
-                ( d === 3 ) ? 'rd' : 'th';
+        if ( ~~ decider === 1 ) {
+            return 'th'
+        }
+
+        switch ( d ) {
+            case 1: return 'st'
+            case 2: return 'nd'
+            case 3: return 'rd'
+            default: return 'th'
+        }
     }
 
     let d = new Date()
